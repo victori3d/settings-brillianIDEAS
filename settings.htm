@@ -1,0 +1,60 @@
+<div id="settings" style="float:right; width: 30vw; height: 80vh; font-size:20px;top:250px;">
+	<form id="settingsForm">
+		<br>
+		Untertitel:
+			<div class="onoffswitch">
+				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="subtitleswitch" checked>
+				<label class="onoffswitch-label" for="subtitleswitch">
+					<span class="onoffswitch-inner"></span>
+					<span class="onoffswitch-switch"></span>
+				</label>
+			</div>
+		Drei Punkte:
+			<fieldset>
+			  <div class="switch-toggle switch-candy">
+				<input id="points_left" name="view" type="radio" checked>
+				<label for="points_left" onclick="">Links</label>
+
+				<input id="points_middle" name="view" type="radio">
+				<label for="points_middle" onclick="">Mittel</label>
+
+				<input id="points_right" name="view" type="radio">
+				<label for="points_right" onclick="">Rechts</label>
+
+				<a></a>
+			  </div>
+			</fieldset>
+		<br>
+		Rundungen:
+		<div id="slider">
+			<input class="bar" type="range" id="roundRange" max="50" value="30" onchange="rangevalue1.value=value"/>
+			<span class="highlight"></span>
+			<output id="rangevalue1">50</output>
+		</div>
+		<br>
+		Helligkeit:
+		<div id="slider">
+			<input class="bar" type="range" id="brightRange" max="200" value="100" onchange="rangevalue2.value=value + '%'"/>
+			<span class="highlight"></span>
+			<output id="rangevalue2">100%</output>
+		</div>
+		<br>
+		Sound:
+			<div class="onoffswitch">
+				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="soundswitch" checked>
+				<label class="onoffswitch-label" for="soundswitch">
+					<span class="onoffswitch-inner"></span>
+					<span class="onoffswitch-switch"></span>
+				</label>
+			</div>
+		Switch Colors:
+			<div class="onoffswitch">
+				<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="colorswitch" checked>
+				<label class="onoffswitch-label" for="colorswitch">
+					<span class="onoffswitch-inner"></span>
+					<span class="onoffswitch-switch"></span>
+				</label>
+			</div>
+		<br><br>
+	</form>
+</div>

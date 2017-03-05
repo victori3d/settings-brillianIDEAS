@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Einstellungen</title>
+
+	
+	<!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Tinos" type="text/css" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" />
+	<link rel="stylesheet" type="text/css" href="settings.css"/>
+	
+	<!--JQuery Mobile -->
+	<script src="js/jq/jquery.js"></script>
+
+	<!-- JS cookie-->
+	<script src="js/jq/js.cookie.js"></script>
+	<script src="settings.js"></script>	
+	<!-- Settings -->
+		
+	<!--<script type="text/javascript">
+		  $(document).ready(function(){
+			$('#settingsButton').click(function(){
+			   Text01();
+			});
+		  });
+	</script>-->
+	</head>
+	
+	<body onload="checkCookiesOnLoad()"> <!--bgcolor="#949494"-->
+	<img id="iconThreeDots" src="img/close.png"/ style="position:absolute">
+	<audio src="https://silentlistening.files.wordpress.com/2008/05/palaoa-strange-sound.mp3" id="whaleAudio" autobuffer autoplay loop></audio>
+	<div id="settingsDiv" style="float:right; width: 30vw; height: 80vh; font-size:20px;"></div>
+	<button id="settingsButton" onclick="Text01()">Show Div</button>
+	
+	</body>
+</html>
