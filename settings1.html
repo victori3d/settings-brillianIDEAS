@@ -4,14 +4,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Einstellungen</title>
-<link rel="stylesheet" href="rocketbar/expstickybar.css"/>
+<!--<link rel="stylesheet" href="rocketbar/expstickybar.css"/>-->
 	
 	<!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Tinos" type="text/css" rel="stylesheet">	
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" />
 <link rel="stylesheet" type="text/css" href="settings1.css"/>
 	<!--JQuery-->
-	<script src="js/jq/jquery.js"></script>
+<!--	<script src="js/jq/jquery.js"></script>-->
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- JS cookie-->
 	<script src="js/jq/js.cookie.js"></script>
@@ -196,10 +198,10 @@
 	</head>
 	<body> <!--bgcolor="#949494"-->
 	<div id="rcorners1" class="divID" style="position: absolute; left: 20%; top: 5%;"></div>
-	<img id="iconThreeDots" src="img/close.png"/ style="position:absolute;bottom:30px;">
+	<img id="rb_toggle" src="img/close.png"/ style="position:absolute;bottom:30px;">
 	<div class="rb_description" style="position:absolute;bottom:15px;font-size:20px;">3 Punkte</div>
 	<audio src="https://silentlistening.files.wordpress.com/2008/05/palaoa-strange-sound.mp3" id="whale" autobuffer autoplay loop></audio>
-		<div id="settings" style="float:right; width: 30vw; height: 80vh; font-size:20px;top:250px;">
+		<div id="settings" class="divID" style="float:right; width: 30vw; height: 80vh; font-size:20px;top:250px;">
 			<form id="settingsForm">
 				<br>
 				Untertitel:

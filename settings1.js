@@ -14,7 +14,7 @@ function setCookiesOnChange(expireDate) {
 	$('#points_left').change(function() {
 		if (this.checked) {
 			Cookies.set('points','left', { expires: expireDate, path: '/' });
-			$('#iconThreeDots').css('left','1%');
+			$('#rb_toggle').css('left','1%');
 			$('.rb_description').css('left','1%');
 		}
 	});
@@ -22,7 +22,7 @@ function setCookiesOnChange(expireDate) {
 	$('#points_middle').change(function() {
 		if (this.checked) {
 			Cookies.set('points','middle', { expires: expireDate, path: '/' });
-			$('#iconThreeDots').css('left','49%');
+			$('#rb_toggle').css('left','49%');
 			$('.rb_description').css('left','49%');
 		}
 	});
@@ -30,7 +30,7 @@ function setCookiesOnChange(expireDate) {
 	$('#points_right').change(function() {
 		if (this.checked) {
 			Cookies.set('points','right', { expires: expireDate, path: '/' });
-			$('#iconThreeDots').css('left','95%');
+			$('#rb_toggle').css('left','95%');
 			$('.rb_description').css('left','95%');
 		}
 	});
@@ -67,23 +67,19 @@ function setCookiesOnChange(expireDate) {
 			$('body').css('background-color','#991b33');
 			$('.divID').css('background-color','#949494');
 			$('#rcorners1').css('background-color','#949494');
+			$('body').css('color','black');
 		} else {
 			Cookies.set('color','grey', { expires: expireDate, path: '/' });
 			$('body').css('background-color','#949494');
 			$('.divID').css('background-color','#991b33');
 			$('#rcorners1').css('background-color','#991b33');
+			$('body').css('color','white');
 		}
 	});	
 }
 
-
-
-$(document).ready(function(){
-	/* Show Cookies Click */
-	var expireDate = 365;
-	
-	setCookiesOnChange(expireDate);
-
+/* Not Working! Wenn man den Code in eine Funktion setzt funktioniert er nicht */
+function getCookiesOnLoad() {
 	/* Rundung */
 	var rundung = Cookies.get('round');
 	if(rundung != null) {
@@ -93,7 +89,7 @@ $(document).ready(function(){
 	}
 	
 	/* Helligkeit */
-	var hell = Cookies.get('round');
+	var hell = Cookies.get('bright');
 	if(hell != null) {
 		$('#brightRange').val(hell);
 		$('#brightRange').val(hell);
@@ -105,17 +101,17 @@ $(document).ready(function(){
 	var pointsSwitch = Cookies.get('points');
 	switch(pointsSwitch) {
 		case "left":
-			$('#iconThreeDots').css('left','1%');
+			$('#rb_toggle').css('left','1%');
 			$('.rb_description').css('left','1%');
 			$('#points_left').prop("checked",true);
 			break;
 		case "middle":
-			$('#iconThreeDots').css('left','45%');
+			$('#rb_toggle').css('left','45%');
 			$('.rb_description').css('left','45%');
 			$('#points_middle').prop("checked",true);
 			break;
 		case "right":
-			$('#iconThreeDots').css('left','95%');
+			$('#rb_toggle').css('left','95%');
 			$('.rb_description').css('left','95%');
 			$('#points_right').prop("checked",true);
 			break;
@@ -156,12 +152,113 @@ $(document).ready(function(){
 	switch(colorSwitch) {
 		case "red":
 			$('body').css('background-color','#991b33');
+			$('#settings').css('background-color','#949494');
+			$('#rcorners1').css('background-color','#949494');
 			$('#colorswitch').prop("checked",true);
+			$('body').css('color','black');
 			break;
 		case "grey":
 			$('body').css('background-color','#949494');
+			$('#rcorners1').css('background-color','#991b33');
 			$('#colorswitch').prop("checked",false);
+			$('#settings').css('background-color','#991b33');
+			$('body').css('color','white');
 			break;
 	}
+}	
+
+$(document).ready(function(){
+	/* Show Cookies Click */
+	var expireDate = 365;
+	
+		/* Rundung */
+	var rundung = Cookies.get('round');
+	if(rundung != null) {
+		$('#roundRange').val(rundung);
+		$('#rangevalue').val(rundung);
+		$('.divID').css('border-radius',rundung + 'px');
+	}
+	
+	/* Helligkeit */
+	var hell = Cookies.get('bright');
+	if(hell != null) {
+		$('#brightRange').val(hell);
+		$('#brightRange').val(hell);
+		$('.divID').css('-webkit-filter','brightness(' + $(this).val() + '%)')
+	}
+	
+	
+	/* Punkte */
+	var pointsSwitch = Cookies.get('points');
+	switch(pointsSwitch) {
+		case "left":
+			$('#rb_toggle').css('left','1%');
+			$('.rb_description').css('left','1%');
+			$('#points_left').prop("checked",true);
+			break;
+		case "middle":
+			$('#rb_toggle').css('left','45%');
+			$('.rb_description').css('left','45%');
+			$('#points_middle').prop("checked",true);
+			break;
+		case "right":
+			$('#rb_toggle').css('left','95%');
+			$('.rb_description').css('left','95%');
+			$('#points_right').prop("checked",true);
+			break;
+		default:
+			console.log("No changes to Points");
+	}
+	
+	/* Subtitle */
+	var subtitleSwitch = Cookies.get('subtitle');
+	switch(subtitleSwitch) {
+		case "true":
+			$('.rb_description').css('display','inline');
+			$('#subtitleswitch').prop("checked",true);
+			break;
+		case "false":
+			$('.rb_description').css('display','none');
+			$('#subtitleswitch').prop("checked",false);
+			break;
+		default:
+			console.log("No changes to Subtitle");
+	}
+	
+	/* Sound */
+	var soundSwitch = Cookies.get('sound');
+	switch(soundSwitch) {
+		case "true":
+			$('audio').each(function(){ this.play(); });
+			$('#soundswitch').prop("checked",true);
+			break;
+		case "false":
+			$('audio').each(function() { this.pause(); });
+			$('#soundswitch').prop("checked",false);
+			break;
+	}
+	
+	/* Color */
+	var colorSwitch = Cookies.get('color');
+	switch(colorSwitch) {
+		case "red":
+			$('body').css('background-color','#991b33');
+			$('.divID').css('background-color','#949494');
+			$('#rcorners1').css('background-color','#949494');
+			$('#colorswitch').prop("checked",true);
+			$('body').css('color','black');
+			break;
+		case "grey":
+			$('body').css('background-color','#949494');
+			$('#rcorners1').css('background-color','#991b33');
+			$('#colorswitch').prop("checked",false);
+			$('.divID').css('background-color','#991b33');
+			$('body').css('color','white');
+			break;
+	}
+	
+	
+	setCookiesOnChange(expireDate);
+	
 /*}*/
 });
