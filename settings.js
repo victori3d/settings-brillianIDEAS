@@ -76,8 +76,6 @@ function setCookiesOnChange(expireDate) {
 	});	
 }
 
-
-
 $(document).ready(function(){
 	/* Show Cookies Click */
 	var expireDate = 365;
@@ -93,13 +91,12 @@ $(document).ready(function(){
 	}
 	
 	/* Helligkeit */
-	var hell = Cookies.get('round');
+	var hell = Cookies.get('bright');
 	if(hell != null) {
 		$('#brightRange').val(hell);
 		$('#brightRange').val(hell);
 		$('.divID').css('-webkit-filter','brightness(' + $(this).val() + '%)')
 	}
-	
 	
 	/* Punkte */
 	var pointsSwitch = Cookies.get('points');

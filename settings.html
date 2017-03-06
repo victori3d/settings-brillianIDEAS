@@ -9,7 +9,7 @@
 	<!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Tinos" type="text/css" rel="stylesheet">	
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" />
-<link rel="stylesheet" type="text/css" href="settings.css"/>
+<link rel="stylesheet" type="text/css" href="settings1.css"/>
 	<!--JQuery-->
 	<script src="js/jq/jquery.js"></script>
 
@@ -65,6 +65,7 @@
 			$('#roundRange').change(function() {
 				Cookies.set('round',$(this).val());
 				$('#settings').css('border-radius',$(this).val() + 'px');
+				$('#rcorners1').css('border-radius',$(this).val() + 'px');
 			});
 			
 			/* Helligkeit */
@@ -72,6 +73,7 @@
 			$('#brightRange').change(function() {
 				Cookies.set('bright',$(this).val());
 				$('#settings').css('-webkit-filter','brightness(' + $(this).val() + '%)');
+				$('#rcorners1').css('-webkit-filter','brightness(' + $(this).val() + '%)');
 			});
 			
 			/* Sound */
@@ -91,11 +93,13 @@
 					Cookies.set('color','red', { expires: expireDate, path: '/' });
 					$('body').css('background-color','#991b33');
 					$('#settings').css('background-color','#949494');
+					$('#rcorners1').css('background-color','#949494');
 					$('body').css('color','black');
 				} else {
 					Cookies.set('color','grey', { expires: expireDate, path: '/' });
 					$('body').css('background-color','#949494');
 					$('#settings').css('background-color','#991b33');
+					$('#rcorners1').css('background-color','#991b33');
 					$('body').css('color','white');
 				}
 			});	
@@ -119,7 +123,7 @@
 			}
 			
 			/* Helligkeit */
-			var hell = Cookies.get('round');
+			var hell = Cookies.get('bright');
 			if(hell != null) {
 				$('#brightRange').val(hell);
 				$('#brightRange').val(hell);
@@ -183,11 +187,13 @@
 				case "red":
 					$('body').css('background-color','#991b33');
 					$('#settings').css('background-color','#949494');
+					$('#rcorners1').css('background-color','#949494');
 					$('#colorswitch').prop("checked",true);
 					$('body').css('color','black');
 					break;
 				case "grey":
 					$('body').css('background-color','#949494');
+					$('#rcorners1').css('background-color','#991b33');
 					$('#colorswitch').prop("checked",false);
 					$('#settings').css('background-color','#991b33');
 					$('body').css('color','white');
@@ -199,6 +205,7 @@
 		</script>
 	</head>
 	<body> <!--bgcolor="#949494"-->
+	<div id="rcorners1" class="divID" style="position: absolute; left: 20%; top: 5%;"></div>
 	<img id="iconThreeDots" src="img/close.png"/ style="position:absolute;bottom:30px;">
 	<div class="rb_description" style="position:absolute;bottom:15px;font-size:20px;">3 Punkte</div>
 	<audio src="https://silentlistening.files.wordpress.com/2008/05/palaoa-strange-sound.mp3" id="whale" autobuffer autoplay loop></audio>
@@ -231,16 +238,16 @@
 				<br>
 				Rundungen:
 				<div id="slider">
-					<input class="bar" type="range" id="roundRange" max="50" value="30" onchange="rangevalue1.value=value"/>
+					<input class="bar" type="range" id="roundRange" max="50" value="30" onchange="rangevalueRundung.value=value"/>
 					<span class="highlight"></span>
-					<output id="rangevalue1">50</output>
+					<output id="rangevalueRundung">50</output>
 				</div>
 				<br>
 				Helligkeit:
 				<div id="slider">
-					<input class="bar" type="range" id="brightRange" max="200" value="100" onchange="rangevalue2.value=value + '%'"/>
+					<input class="bar" type="range" id="brightRange" max="200" value="100" onchange="rangevalueBright.value=value + '%'"/>
 					<span class="highlight"></span>
-					<output id="rangevalue2">100%</output>
+					<output id="rangevalueBright">100%</output>
 				</div>
 				<br>
 				Sound:
